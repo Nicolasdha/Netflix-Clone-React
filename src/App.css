@@ -5,3 +5,7 @@
 .app {
   background-color: #111;
 }
+
+.app__rows {
+  margin-top: -75px;
+}

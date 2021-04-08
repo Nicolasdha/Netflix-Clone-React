@@ -1,12 +1,15 @@
 .row {
-  margin-left: 10px;
-  color: white;
+  margin-left: 45px;
+  color: rgba(255, 255, 255, 0.863);
+}
+.row > h2 {
+  font-size: 1.3rem;
 }
 .row__posters {
   display: flex;
   overflow-y: hidden;
   overflow-y: scroll;
-  padding: 20px;
+  padding: 25px;
 }
 
 .row__posters::-webkit-scrollbar {
@@ -15,20 +18,28 @@
 
 .row__posters--img {
   object-fit: contain;
-  width: 100%;
   max-height: 100px;
   transition: transform 450ms;
   margin-right: 10px;
 }
 
 .row__posters--img:hover {
-  transform: scale(1.08);
+  transform: scale(1.4);
 }
 
 .row__poster--imgLarge {
-  max-height: 250px;
+  max-height: 350px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-.row__posters--img:hover {
-  transform: scale(1.09);
+.row__poster--imgLarge:hover {
+  transform: scale(1.2);
+}
+
+.row__trendingNow {
+  background-color: rgba(56, 56, 56, 0.596);
+  padding: 20px 0 20px 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

@@ -4,7 +4,7 @@ import movieTrailer from "movie-trailer";
 import axios from "../axios";
 import "../styles/Row.css";
 
-function Row({ title, fetchUrl, isLargeRow }) {
+function Row({ title, fetchUrl, isLargeRow, trendingNow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
 
@@ -57,7 +57,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
   };
 
   return (
-    <div className='row'>
+    <div className={`row ${trendingNow && "row__trendingNow"}`}>
       <h2>{title}</h2>
       <div className='row__posters'>
         {movies.map((movie) => (
