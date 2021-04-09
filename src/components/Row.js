@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import YouTube from "react-youtube";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import movieTrailer from "movie-trailer";
 import axios from "../axios";
 import "../styles/Row.css";
@@ -56,25 +58,60 @@ function Row({ title, fetchUrl, isLargeRow, trendingNow }) {
     }
   };
 
+  const onHover = () => {
+    document.getElementById("row__trendingNow").scrollBy({
+      left: -4000,
+      top: 100,
+      behavior: "smooth",
+    });
+  };
+
+  const ref = useRef();
+
+  const scroll = (scrollOffset) => {
+    ref.current.scrollLeft += scrollOffset;
+  };
+
   return (
     <div className={`row ${trendingNow && "row__trendingNow"}`}>
       <h2>{title}</h2>
-      <div className='row__posters'>
-        {movies.map((movie) => (
-          <img
-            onClick={() => getTrailer(movie)}
-            key={movie.id}
-            className={`row__posters--img ${
-              isLargeRow && "row__poster--imgLarge"
-            }`}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
+      <div className='row__posters' ref={ref}>
+        <button
+          onClick={() => scroll(-700)}
+          className='row__poster--buttonLeft'
+        >
+          <ArrowBackIosIcon
+            style={{
+              fontSize: "50px",
+            }}
+            className='row__poster--buttonIcon'
           />
+        </button>
+        {movies.map((movie) => (
+          <div>
+            <img
+              onClick={() => getTrailer(movie)}
+              key={movie.id}
+              className={`row__posters--img ${
+                isLargeRow && "row__poster--imgLarge"
+              }`}
+              src={`${base_url}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+            />
+          </div>
         ))}
       </div>
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      <button onClick={() => scroll(700)} className='row__poster--buttonRight'>
+        <ArrowForwardIosIcon
+          style={{
+            fontSize: "50px",
+          }}
+          className='row__poster--buttonIcon'
+        />
+      </button>
     </div>
   );
 }
