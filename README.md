@@ -46,7 +46,7 @@ Third-Party Libraries:
 
 This application is initalized using Google Firebase. Please follow this hyperlink to be taken to where this application is hosted:
 
-<a href='https://ndurikha-netlifx-clone.firebaseapp.com/'> Netflix Clone </a>
+<a href='https://ndurikha-netflix-clone.firebaseapp.com/'> Netflix Clone </a>
 
 ### Structure
 
